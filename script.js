@@ -379,4 +379,68 @@ const createCursorTrail = () => {
 // Uncomment to enable cursor trail
 // createCursorTrail();
 
+// Project Card GitHub Link Handler
+document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', function() {
+        const githubUrl = this.getAttribute('data-github');
+        if (githubUrl) {
+            window.open(githubUrl, '_blank', 'noopener,noreferrer');
+        }
+    });
+});
+
+// Popup Functionality
+const popupOverlay = document.getElementById('popupOverlay');
+const popupClose = document.getElementById('popupClose');
+const popupContactBtn = document.getElementById('popupContactBtn');
+const popupProjectsBtn = document.getElementById('popupProjectsBtn');
+
+// Show popup on page load (after a short delay for better UX)
+window.addEventListener('load', () => {
+    // Check if popup has been shown before in this session
+    if (!sessionStorage.getItem('popupShown')) {
+        setTimeout(() => {
+            popupOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling when popup is open
+            sessionStorage.setItem('popupShown', 'true');
+        }, 1000); // 1 second delay
+    }
+});
+
+// Close popup function
+function closePopup() {
+    popupOverlay.classList.remove('active');
+    document.body.style.overflow = ''; // Re-enable scrolling
+}
+
+// Close popup on close button click
+if (popupClose) {
+    popupClose.addEventListener('click', closePopup);
+}
+
+// Close popup when clicking outside the popup container
+if (popupOverlay) {
+    popupOverlay.addEventListener('click', (e) => {
+        if (e.target === popupOverlay) {
+            closePopup();
+        }
+    });
+}
+
+// Close popup and navigate when clicking buttons
+if (popupContactBtn) {
+    popupContactBtn.addEventListener('click', closePopup);
+}
+
+if (popupProjectsBtn) {
+    popupProjectsBtn.addEventListener('click', closePopup);
+}
+
+// Close popup with Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && popupOverlay.classList.contains('active')) {
+        closePopup();
+    }
+});
+
 console.log('🚀 Portfolio loaded successfully! Built with passion by Mushaf');

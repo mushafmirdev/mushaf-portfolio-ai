@@ -9,6 +9,42 @@
     <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
+    <!-- Blog/Updates Popup -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-container">
+            <button class="popup-close" id="popupClose" aria-label="Close popup">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="popup-content">
+                <h2 class="popup-title">🎉 Latest Updates</h2>
+                <div class="popup-body">
+                    <div class="update-item">
+                        <span class="update-date">November 27, 2025</span>
+                        <h3>Welcome to My Portfolio!</h3>
+                        <p>Thanks for visiting! I'm excited to share my journey in AI, Robotics, and Software Development. Explore my projects and feel free to connect!</p>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-date">November 2025</span>
+                        <h3>New Projects Added</h3>
+                        <p>Check out my latest work including the Smart Robot (DLD), AI-Based HR System, and University Chatbot. All projects are now open source on GitHub!</p>
+                    </div>
+                    <div class="update-item">
+                        <span class="update-date">Ongoing</span>
+                        <h3>Available for Freelance</h3>
+                        <p>I'm currently available for AI development, automation, and web development projects. Let's build something amazing together!</p>
+                    </div>
+                </div>
+                <div class="popup-footer">
+                    <a href="#contact" class="popup-btn" id="popupContactBtn">Get In Touch</a>
+                    <a href="#projects" class="popup-btn popup-btn-secondary" id="popupProjectsBtn">View Projects</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Animated Background -->
     <div class="bg-animation">
         <div class="cube"></div>
@@ -131,7 +167,12 @@
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-github="https://github.com/mushafmirdev/smart-robot-dld">
+                    <div class="project-tooltip">
+                        <h4>Smart Robot (DLD)</h4>
+                        <p>A comprehensive multifunctional robot built using Digital Logic Design principles. Features include real-time fire detection using flame sensors, automated security alert system, temperature and humidity monitoring, and autonomous navigation capabilities. Integrated with IoT for remote monitoring and control.</p>
+                        <span class="tooltip-tech">Technologies: Arduino, Sensors, C++, IoT</span>
+                    </div>
                     <div class="project-image">
                         <div class="project-overlay">
                             <span class="project-icon">🤖</span>
@@ -145,10 +186,21 @@
                             <span>DLD</span>
                             <span>Automation</span>
                         </div>
+                        <a href="https://github.com/mushafmirdev/smart-robot-dld" target="_blank" rel="noopener noreferrer" class="github-link" onclick="event.stopPropagation()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-github="https://github.com/mushafmirdev/ai-hr-system">
+                    <div class="project-tooltip">
+                        <h4>AI-Based HR System</h4>
+                        <p>Comprehensive HR management solution developed for the Battle of Code competition. Includes AI-powered candidate screening, automated resume parsing, predictive analytics for employee retention, and intelligent performance evaluation. Complete with detailed white paper and modern UI/UX design.</p>
+                        <span class="tooltip-tech">Technologies: Machine Learning, Python, UI/UX, Data Analytics</span>
+                    </div>
                     <div class="project-image">
                         <div class="project-overlay">
                             <span class="project-icon">💼</span>
@@ -162,10 +214,21 @@
                             <span>UI/UX</span>
                             <span>HR Tech</span>
                         </div>
+                        <a href="https://github.com/mushafmirdev/ai-hr-system" target="_blank" rel="noopener noreferrer" class="github-link" onclick="event.stopPropagation()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-github="https://github.com/mushafmirdev/university-chatbot">
+                    <div class="project-tooltip">
+                        <h4>University Chatbot</h4>
+                        <p>Intelligent NLP-powered chatbot designed to assist students with university-related queries. Provides instant information about fee structures, available scholarships, admission procedures, course details, and campus facilities. Built with natural language processing for conversational interactions.</p>
+                        <span class="tooltip-tech">Technologies: Python, NLP, TensorFlow, Natural Language Processing</span>
+                    </div>
                     <div class="project-image">
                         <div class="project-overlay">
                             <span class="project-icon">💬</span>
@@ -179,10 +242,21 @@
                             <span>Python</span>
                             <span>Chatbot</span>
                         </div>
+                        <a href="https://github.com/mushafmirdev/university-chatbot" target="_blank" rel="noopener noreferrer" class="github-link" onclick="event.stopPropagation()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-github="https://github.com/mushafmirdev/laptop-price-predictor">
+                    <div class="project-tooltip">
+                        <h4>Laptop Price Predictor</h4>
+                        <p>Advanced machine learning model that predicts laptop prices based on specifications. Compares multiple regression algorithms including Linear Regression, Random Forest, and Gradient Boosting. Features comprehensive data visualization, model performance metrics, and user-friendly interface for price estimation.</p>
+                        <span class="tooltip-tech">Technologies: Python, Scikit-learn, Pandas, Matplotlib, Machine Learning</span>
+                    </div>
                     <div class="project-image">
                         <div class="project-overlay">
                             <span class="project-icon">💻</span>
@@ -196,10 +270,21 @@
                             <span>Python</span>
                             <span>Scikit-learn</span>
                         </div>
+                        <a href="https://github.com/mushafmirdev/laptop-price-predictor" target="_blank" rel="noopener noreferrer" class="github-link" onclick="event.stopPropagation()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-github="https://github.com/mushafmirdev/travel-booking-system">
+                    <div class="project-tooltip">
+                        <h4>Travel Booking System</h4>
+                        <p>Comprehensive C++ travel management application implementing Object-Oriented Programming and Data Structures. Features cab booking with real-time availability, customizable hotel packages, user authentication, booking history, and payment processing. Demonstrates advanced DSA concepts with efficient algorithms.</p>
+                        <span class="tooltip-tech">Technologies: C++, OOP, Data Structures, Algorithms</span>
+                    </div>
                     <div class="project-image">
                         <div class="project-overlay">
                             <span class="project-icon">✈️</span>
@@ -213,10 +298,21 @@
                             <span>OOP</span>
                             <span>DSA</span>
                         </div>
+                        <a href="https://github.com/mushafmirdev/travel-booking-system" target="_blank" rel="noopener noreferrer" class="github-link" onclick="event.stopPropagation()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
 
-                <div class="project-card">
+                <div class="project-card" data-github="https://github.com/mushafmirdev/chill-and-wear">
+                    <div class="project-tooltip">
+                        <h4>Chill & Wear</h4>
+                        <p>Modern e-commerce platform specializing in premium dry fruits and healthy snacks. Built with React for dynamic user experience, Firebase for real-time database and authentication, responsive design for all devices, shopping cart functionality, and secure payment gateway integration.</p>
+                        <span class="tooltip-tech">Technologies: React.js, Firebase, JavaScript, Responsive Design</span>
+                    </div>
                     <div class="project-image">
                         <div class="project-overlay">
                             <span class="project-icon">🛍️</span>
@@ -230,6 +326,12 @@
                             <span>Firebase</span>
                             <span>E-commerce</span>
                         </div>
+                        <a href="https://github.com/mushafmirdev/chill-and-wear" target="_blank" rel="noopener noreferrer" class="github-link" onclick="event.stopPropagation()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                            </svg>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
             </div>
