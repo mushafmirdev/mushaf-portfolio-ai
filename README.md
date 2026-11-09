@@ -1,34 +1,45 @@
-#  Mushaf Portfolio AI
+# Mushaf Ali Portfolio
 
-Welcome to **Mushaf’s Interactive Portfolio Website**, an upgraded version of my personal portfolio — now featuring an **AI-powered chatbot assistant** that interacts with visitors in real time.
+A responsive personal portfolio built with plain HTML, CSS, and JavaScript. The homepage introduces Mushaf Ali; About, Activities, Skills, Tools, Projects, Services, and Contact each have a dedicated page. The shared theme selector and AI chatbot are available throughout the site.
 
-This project represents the fusion of **frontend web development** and **AI workflow automation** using **n8n**, giving visitors an engaging and intelligent browsing experience.
+## Pages
 
----
+- `index.html` — Home
+- `about.html` — Education, interests, and vision
+- `activities.html` — Community and leadership roles
+- `skills.html` — Programming, AI, machine learning, and generative AI
+- `tools.html` — Frameworks, libraries, development tools, and technologies
+- `projects.html` — Featured projects and repositories
+- `services.html` — Services and inquiry links
+- `contact.html` — Contact details and disabled contact form
 
-##  Features
+## Run locally
 
--  **Modern Frontend:** Built entirely with **HTML, CSS, and JavaScript** for a responsive and aesthetic design.  
--  **AI Chatbot Integration:** Real-time chatbot built via **n8n** workflow and connected using **webhooks** through **ngrok**.  
--  **Custom AI Personality:** The chatbot responds in a tone and style inspired by my personal assistant concept — “Mushaf AI”.  
--  **Interactive Experience:** Users can chat directly, ask about my projects, or request information about my skills.  
--  **Lightweight & Fast:** Optimized for web performance and smooth UI transitions.
+Open `index.html` directly, or serve the project directory with a static web server such as the VS Code Live Server extension. No build step or package installation is required.
 
----
+## Hosting
 
-##  Tech Stack
+The root `CNAME` file is configured for the custom domain `mushafali.live`. The Git remote points to `mushafmirdev/mushaf-portfolio-ai` on the `main` branch. This checkout does not include a Pages workflow or build configuration, so confirm the publishing source in the repository's GitHub Pages settings. The intended site URLs are:
 
-| Layer | Technology |
-|-------|-------------|
-| **Frontend** | HTML, CSS, JavaScript |
-| **Automation / AI Agent** | n8n (local workflow) |
-| **Communication Bridge** | ngrok (secure tunnel) |
-| **Hosting** | GitHub Pages *(or planned deployment)* |
+- https://mushafali.live/
+- https://mushafali.live/about.html
+- https://mushafali.live/activities.html
+- https://mushafali.live/skills.html
+- https://mushafali.live/tools.html
+- https://mushafali.live/projects.html
+- https://mushafali.live/services.html
+- https://mushafali.live/contact.html
 
----
+The deployed branch is `main`.
 
-##  Setup Guide
+## Theme
 
-### 1️ Clone the repository
-```bash
-git clone https://github.com/mushaf-ai/mushaf-portfolio-ai.git
+The site follows the visitor's operating-system color preference by default. The navigation menu allows choosing System, Light, or Dark; explicit choices are stored in browser local storage.
+
+## AI assistant
+
+`chatbot.js` sends the visitor's message, an ISO timestamp, and a locally generated user ID to the configured n8n webhook. The webhook must be online and allow browser requests from the deployed site. The current URL uses an ngrok free domain, which may change or become unavailable; update `webhookUrl` in `chatbot.js` if the endpoint changes. No API key is included in the frontend.
+
+## Contact form
+
+The contact form is intentionally disabled because this static site has no message-processing backend. Visitors can use the direct email link instead.

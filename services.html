@@ -3,254 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Mushaf Ali</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta name="description" content="Explore Mushaf Ali's services in AI automation, machine learning, web development, and UI/UX design.">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Services | Mushaf Ali">
+    <meta property="og:description" content="AI automation, machine learning, web development, and UI/UX design services by Mushaf Ali.">
+    <meta property="og:url" content="https://mushafali.live/services.html">
+    <meta property="og:image" content="https://mushafali.live/assets/profile.png">
+    <meta property="og:image:alt" content="Portrait of Mushaf Ali">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://mushafali.live/services.html">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <title>Services | Mushaf Ali - AI Developer</title>
+    <script>
+        (() => {
+            let mode = 'system';
+            try {
+                mode = localStorage.getItem('portfolio-theme') || 'system';
+            } catch (error) {
+                // Use the system preference when browser storage is unavailable.
+            }
+            const dark = mode === 'dark' || (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+            document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+            document.documentElement.dataset.themeMode = mode;
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="services.css">
     <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="bg-animation">
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-        <div class="cube"></div>
-    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Main navigation">
+            <a class="brand" href="index.html" aria-label="Mushaf Ali, home">
+                <span class="brand-name">Mushaf Ali</span>
+                <span class="brand-role">AI Developer</span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <span></span><span></span>
+            </button>
+            <ul class="nav-links" id="primary-navigation">
+                <li><a class="nav-link" href="index.html">Home</a></li>
+                <li><a class="nav-link" href="about.html">About</a></li>
+                <li><a class="nav-link" href="activities.html">Activities</a></li>
+                <li><a class="nav-link" href="skills.html">Skills</a></li>
+                <li><a class="nav-link" href="tools.html">Tools</a></li>
+                <li><a class="nav-link" href="projects.html">Projects</a></li>
+                <li><a class="nav-link active" href="services.html" aria-current="page">Services</a></li>
+                <li><a class="nav-link" href="contact.html">Contact</a></li>
+            </ul>
+            <label class="theme-control">
+                <span class="sr-only">Color theme</span>
+                <select id="themeSelect" aria-label="Color theme">
+                    <option value="system">System</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                </select>
+            </label>
+        </nav>
+    </header>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <a href="index.html" class="logo">
-            <div class="logo-content">
-                <span class="logo-name">MUSHAF</span>
-                <span class="logo-tagline">AI & Robotics Engineer</span>
+    <main id="main">
+        <section class="services-hero section-wrap" aria-labelledby="services-title">
+            <div class="container services-intro">
+                <p class="eyebrow">Services</p>
+                <h1 id="services-title">Practical digital solutions</h1>
+                <p>Support for teams and projects working with AI, software, and digital products.</p>
             </div>
-        </a>
-        <ul class="nav-links">
-            <li><a href="index.html#home" class="nav-link">Home</a></li>
-            <li><a href="index.html#about" class="nav-link">About</a></li>
-            <li><a href="services.html" class="nav-link active">Services</a></li>
-            <li><a href="index.html#projects" class="nav-link">Projects</a></li>
-            <li><a href="index.html#skills" class="nav-link">Skills</a></li>
-            <li><a href="index.html#contact" class="nav-link">Contact</a></li>
-        </ul>
-        <div class="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </nav>
+        </section>
 
-    <!-- Services Hero Section -->
-    <section class="services-hero">
-        <div class="container">
-            <h1 class="services-hero-title">My Services</h1>
-            <p class="services-hero-subtitle">Empowering businesses with cutting-edge AI, ML, and web solutions</p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="container">
-            <div class="services-grid">
-                
-                <!-- AI Automation -->
-                <div class="service-card">
-                    <div class="service-icon">⚡</div>
-                    <h3 class="service-title">AI Automation</h3>
-                    <p class="service-description">
-                        Streamline your business processes with intelligent automation. Reduce manual work 
-                        and increase efficiency through AI-powered workflow automation.
-                    </p>
-                    <ul class="service-features">
-                        <li>Process Automation</li>
-                        <li>Workflow Optimization</li>
-                        <li>Smart Chatbots</li>
-                        <li>Business Intelligence</li>
-                    </ul>
-                    <a href="index.html#contact" class="service-btn">Get Started</a>
-                </div>
-
-                <!-- Machine Learning -->
-                <div class="service-card">
-                    <div class="service-icon">🧠</div>
-                    <h3 class="service-title">Machine Learning</h3>
-                    <p class="service-description">
-                        Advanced ML solutions for data analysis, prediction, and pattern recognition. 
-                        Transform your data into actionable insights with state-of-the-art algorithms.
-                    </p>
-                    <ul class="service-features">
-                        <li>Predictive Analytics</li>
-                        <li>Classification Models</li>
-                        <li>Data Mining</li>
-                        <li>Model Training & Deployment</li>
-                    </ul>
-                    <a href="index.html#contact" class="service-btn">Get Started</a>
-                </div>
-
-                <!-- Web Development -->
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3 class="service-title">Web Development</h3>
-                    <p class="service-description">
-                        Modern, responsive websites and web applications built with the latest technologies. 
-                        From simple landing pages to complex web platforms.
-                    </p>
-                    <ul class="service-features">
-                        <li>React.js Development</li>
-                        <li>Full Stack Solutions</li>
-                        <li>E-commerce Platforms</li>
-                        <li>Progressive Web Apps</li>
-                    </ul>
-                    <a href="index.html#contact" class="service-btn">Get Started</a>
-                </div>
-
-                <!-- UI/UX Design -->
-                <div class="service-card">
-                    <div class="service-icon">🎨</div>
-                    <h3 class="service-title">UI/UX Design</h3>
-                    <p class="service-description">
-                        Beautiful, intuitive designs that enhance user experience. Creating interfaces 
-                        that are both aesthetically pleasing and highly functional.
-                    </p>
-                    <ul class="service-features">
-                        <li>User Interface Design</li>
-                        <li>User Experience Research</li>
-                        <li>Wireframing & Prototyping</li>
-                        <li>Design Systems</li>
-                    </ul>
-                    <a href="index.html#contact" class="service-btn">Get Started</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Me Section -->
-    <section class="why-choose">
-        <div class="container">
-            <h2 class="section-title">Why Choose Me?</h2>
-            <div class="why-grid">
-                <div class="why-card">
-                    <div class="why-icon">⭐</div>
-                    <h3>Quality First</h3>
-                    <p>Delivering high-quality solutions that exceed expectations and industry standards.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">⚡</div>
-                    <h3>Fast Delivery</h3>
-                    <p>Efficient project management ensuring timely delivery without compromising quality.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">💡</div>
-                    <h3>Innovation</h3>
-                    <p>Cutting-edge technologies and creative solutions for modern challenges.</p>
-                </div>
-                <div class="why-card">
-                    <div class="why-icon">🤝</div>
-                    <h3>Dedicated Support</h3>
-                    <p>Continuous support and maintenance to ensure your project's long-term success.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="services-cta">
-        <div class="container">
-            <h2 class="cta-title">Ready to Start Your Project?</h2>
-            <p class="cta-description">Let's build something amazing together. Get in touch to discuss your project needs.</p>
-            <a href="index.html#contact" class="btn btn-primary btn-large">Contact Me Now</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <!-- About Column -->
-                <div class="footer-col">
-                    <h3 class="footer-title">
-                        <span class="footer-logo">M</span>
-                        USHAF ALI
-                    </h3>
-                    <p class="footer-description">
-                        AI & Robotics Engineer passionate about building innovative solutions for Pakistan's tech future.
-                    </p>
-                    <div class="footer-social">
-                        <a href="https://github.com/mushafali" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="GitHub">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                            </svg>
-                        </a>
-                        <a href="https://linkedin.com/in/mushafali" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="LinkedIn">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                            </svg>
-                        </a>
+        <section class="section-wrap section-muted" aria-label="Service offerings">
+            <div class="container services-list">
+                <article class="service-item">
+                    <div class="service-number">01</div>
+                    <div class="service-detail">
+                        <h2>AI Automation</h2>
+                        <p>Streamline repetitive business processes and workflows with practical automation and conversational tools.</p>
+                        <h3>Areas of work</h3>
+                        <ul><li>Process automation</li><li>Workflow optimization</li><li>Smart chatbots</li><li>Business intelligence</li></ul>
+                        <p class="service-stack"><strong>Related technologies:</strong> AI workflows, automation, chatbots</p>
                     </div>
-                </div>
-
-                <!-- Quick Links Column -->
-                <div class="footer-col">
-                    <h4 class="footer-heading">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="index.html#home">Home</a></li>
-                        <li><a href="index.html#about">About Me</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="index.html#projects">Projects</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-
-                <!-- Services Column -->
-                <div class="footer-col">
-                    <h4 class="footer-heading">Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">AI Automation</a></li>
-                        <li><a href="services.html">Machine Learning</a></li>
-                        <li><a href="services.html">Web Development</a></li>
-                        <li><a href="services.html">UI/UX Design</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact Column -->
-                <div class="footer-col">
-                    <h4 class="footer-heading">Get In Touch</h4>
-                    <ul class="footer-contact">
-                        <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                            <a href="mailto:mushaf.ali@example.com">mushaf.ali@example.com</a>
-                        </li>
-                        <li>
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                            <span>Islamabad, Pakistan 🇵🇰</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Footer Bottom -->
-            <div class="footer-bottom">
-                <div class="footer-bottom-content">
-                    <p>&copy; 2025 Mushaf Ali. All rights reserved. Empowering Pakistan through AI & Robotics.</p>
-                    <div class="footer-bottom-links">
-                        <a href="#privacy">Privacy Policy</a>
-                        <span>•</span>
-                        <a href="#terms">Terms of Service</a>
+                    <a class="button button-secondary service-action" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="service-item">
+                    <div class="service-number">02</div>
+                    <div class="service-detail">
+                        <h2>Machine Learning</h2>
+                        <p>Explore data through predictive models and pattern recognition, turning analysis into useful insights.</p>
+                        <h3>Areas of work</h3>
+                        <ul><li>Predictive analytics</li><li>Classification models</li><li>Data mining</li><li>Model training and deployment</li></ul>
+                        <p class="service-stack"><strong>Related technologies:</strong> Python, Scikit-learn</p>
                     </div>
-                </div>
+                    <a class="button button-secondary service-action" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="service-item">
+                    <div class="service-number">03</div>
+                    <div class="service-detail">
+                        <h2>Web Development</h2>
+                        <p>Responsive websites and web applications, from focused pages to fuller digital products.</p>
+                        <h3>Areas of work</h3>
+                        <ul><li>React development</li><li>Full-stack solutions</li><li>E-commerce platforms</li><li>Progressive web apps</li></ul>
+                        <p class="service-stack"><strong>Related technologies:</strong> HTML, CSS, JavaScript, React</p>
+                    </div>
+                    <a class="button button-secondary service-action" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="service-item">
+                    <div class="service-number">04</div>
+                    <div class="service-detail">
+                        <h2>UI/UX Design</h2>
+                        <p>Thoughtful interfaces that balance visual clarity with practical, easy-to-use workflows.</p>
+                        <h3>Areas of work</h3>
+                        <ul><li>User interface design</li><li>User experience research</li><li>Wireframing and prototyping</li><li>Design systems</li></ul>
+                        <p class="service-stack"><strong>Related technologies:</strong> UI/UX design, wireframing, prototyping</p>
+                    </div>
+                    <a class="button button-secondary service-action" href="contact.html">Discuss a project <span aria-hidden="true">↗</span></a>
+                </article>
             </div>
+        </section>
+
+        <section class="section-wrap service-approach">
+            <div class="container approach-layout">
+                <div><p class="eyebrow">Working together</p><h2>A considered approach</h2></div>
+                <ul class="approach-list">
+                    <li><strong>Quality first</strong><span>Careful implementation and attention to the details that matter.</span></li>
+                    <li><strong>Thoughtful innovation</strong><span>Appropriate technologies and considered solutions for each challenge.</span></li>
+                    <li><strong>Clear delivery</strong><span>Focused work with practical milestones and communication.</span></li>
+                    <li><strong>Ongoing support</strong><span>Support and maintenance to help projects keep working over time.</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-wrap section-muted service-contact">
+            <div class="container service-contact-inner">
+                <div><p class="eyebrow">Have a project in mind?</p><h2>Let’s talk about it.</h2></div>
+                <a class="button button-primary" href="mailto:alimushaf30@gmail.com">Email Mushaf <span aria-hidden="true">↗</span></a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p><strong>Mushaf Ali</strong><br>AI Developer · Islamabad, Pakistan</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="activities.html">Activities</a>
+                <a href="skills.html">Skills</a>
+                <a href="tools.html">Tools</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+                <a href="https://github.com/mushafmirdev" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://www.linkedin.com/in/mushafmir/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:alimushaf30@gmail.com">Email</a>
+            </div>
+            <p class="copyright">© <span data-current-year>2026</span> Mushaf Ali</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="chatbot.js"></script>
+    <script src="script.js" defer></script>
+    <script src="chatbot.js" defer></script>
 </body>
 </html>

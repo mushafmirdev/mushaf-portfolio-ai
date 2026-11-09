@@ -1,274 +1,157 @@
-// Chatbot functionality
 class Chatbot {
     constructor() {
         this.webhookUrl = 'https://unsystematizing-snitchier-lane.ngrok-free.dev/webhook/portfolio-chat';
         this.isOpen = false;
         this.messages = [];
-        this.init();
-    }
-
-    init() {
         this.createChatUI();
         this.attachEventListeners();
-        this.addWelcomeMessage();
     }
 
     createChatUI() {
-        // Create chat button
         const chatButton = document.createElement('button');
         chatButton.className = 'chat-button';
-        chatButton.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-                <path d="M7 9h10v2H7zm0-3h10v2H7zm0 6h7v2H7z"/>
-            </svg>
-            <svg class="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <line x1="18" y1="6" x2="6" y2="18"></line>
-                <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-        `;
+        chatButton.type = 'button';
+        chatButton.setAttribute('aria-label', 'Open AI chat');
+        chatButton.setAttribute('aria-expanded', 'false');
+        chatButton.setAttribute('aria-controls', 'chatContainer');
+        chatButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v12H7l-3 3V4zm4 4h8v1H8zm0 4h6v1H8z"/></svg>';
         document.body.appendChild(chatButton);
 
-        // Create chat container
-        const chatContainer = document.createElement('div');
+        const chatContainer = document.createElement('section');
         chatContainer.className = 'chat-container';
+        chatContainer.id = 'chatContainer';
+        chatContainer.setAttribute('role', 'dialog');
+        chatContainer.setAttribute('aria-label', 'Mushaf AI Assistant');
+        chatContainer.hidden = true;
         chatContainer.innerHTML = `
-            <div class="chat-header">
-                <div class="chat-avatar">M</div>
-                <div class="chat-header-info">
-                    <h3>Mushaf AI Assistant</h3>
-                    <p><span class="chat-status"></span>Online - Ask me anything!</p>
+            <header class="chat-header">
+                <div>
+                    <h2>Mushaf AI Assistant</h2>
+                    <p>Ask about projects, skills, or services</p>
                 </div>
-            </div>
-            <div class="chat-messages" id="chatMessages">
-                <div class="welcome-message">
-                    <h4>👋 Welcome!</h4>
-                    <p>Hi! I'm Mushaf's AI assistant. How can I help you today?</p>
-                </div>
-            </div>
-            <div class="typing-indicator">
-                <div class="message-avatar">M</div>
-                <div class="typing-dots">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </div>
-            <div class="error-message" id="errorMessage">
-                Failed to send message. Please try again.
-            </div>
-            <div class="chat-input">
-                <form class="chat-input-form" id="chatForm">
-                    <input 
-                        type="text" 
-                        id="chatInput" 
-                        placeholder="Type your message..."
-                        autocomplete="off"
-                        required
-                    >
-                    <button type="submit" class="chat-send-btn" id="sendBtn">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                        </svg>
-                    </button>
-                </form>
-            </div>
+                <button class="chat-close" type="button" aria-label="Close chat">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+                </button>
+            </header>
+            <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-relevant="additions"></div>
+            <p class="chat-status" id="chatStatus" role="status" aria-live="polite"></p>
+            <form class="chat-input-form" id="chatForm">
+                <label class="sr-only" for="chatInput">Your message</label>
+                <input type="text" id="chatInput" placeholder="Write a message…" autocomplete="off" required>
+                <button type="submit" class="chat-send-btn" id="sendBtn" aria-label="Send message">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 21 3l-8.5 18-2-7.5L3 11.5zm7.5 2L21 3"/></svg>
+                </button>
+            </form>
         `;
         document.body.appendChild(chatContainer);
 
         this.chatButton = chatButton;
         this.chatContainer = chatContainer;
-        this.chatMessages = document.getElementById('chatMessages');
-        this.chatForm = document.getElementById('chatForm');
-        this.chatInput = document.getElementById('chatInput');
-        this.sendBtn = document.getElementById('sendBtn');
-        this.typingIndicator = chatContainer.querySelector('.typing-indicator');
-        this.errorMessage = document.getElementById('errorMessage');
+        this.chatMessages = chatContainer.querySelector('#chatMessages');
+        this.chatForm = chatContainer.querySelector('#chatForm');
+        this.chatInput = chatContainer.querySelector('#chatInput');
+        this.sendBtn = chatContainer.querySelector('#sendBtn');
+        this.chatStatus = chatContainer.querySelector('#chatStatus');
+        this.closeButton = chatContainer.querySelector('.chat-close');
     }
 
     attachEventListeners() {
-        // Toggle chat
-        this.chatButton.addEventListener('click', () => this.toggleChat());
-
-        // Handle form submission
-        this.chatForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+        this.chatButton.addEventListener('click', () => this.setOpen(!this.isOpen));
+        this.closeButton.addEventListener('click', () => this.setOpen(false));
+        this.chatForm.addEventListener('submit', (event) => {
+            event.preventDefault();
             this.sendMessage();
         });
-
-        // Close chat when clicking outside
-        document.addEventListener('click', (e) => {
-            if (this.isOpen && 
-                !this.chatContainer.contains(e.target) && 
-                !this.chatButton.contains(e.target)) {
-                this.toggleChat();
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && this.isOpen) this.setOpen(false);
+        });
+        document.addEventListener('click', (event) => {
+            if (this.isOpen && !this.chatContainer.contains(event.target) && !this.chatButton.contains(event.target)) {
+                this.setOpen(false);
             }
         });
     }
 
-    toggleChat() {
-        this.isOpen = !this.isOpen;
-        this.chatButton.classList.toggle('active');
-        this.chatContainer.classList.toggle('active');
-        
-        if (this.isOpen) {
-            this.chatInput.focus();
-        }
-    }
-
-    addWelcomeMessage() {
-        // Welcome message is already in HTML
+    setOpen(isOpen) {
+        this.isOpen = isOpen;
+        this.chatContainer.hidden = !isOpen;
+        this.chatButton.setAttribute('aria-expanded', String(isOpen));
+        this.chatButton.setAttribute('aria-label', isOpen ? 'Close AI chat' : 'Open AI chat');
+        if (isOpen) this.chatInput.focus();
+        else this.chatButton.focus();
     }
 
     async sendMessage() {
         const message = this.chatInput.value.trim();
-        
-        if (!message) return;
+        if (!message || this.sendBtn.disabled) return;
 
-        // Hide error message
-        this.errorMessage.classList.remove('active');
-
-        // Add user message to chat
+        this.chatStatus.textContent = '';
         this.addMessage(message, 'user');
-        
-        // Clear input
         this.chatInput.value = '';
-        
-        // Disable send button and show typing indicator
         this.sendBtn.disabled = true;
-        this.showTypingIndicator();
+        this.chatStatus.textContent = 'Sending…';
 
         try {
-            // Send message to webhook
             const response = await fetch(this.webhookUrl, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    message: message,
+                    message,
                     timestamp: new Date().toISOString(),
                     userId: this.getUserId()
                 })
             });
 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            if (!response.ok) throw new Error('The assistant could not be reached.');
 
             const data = await response.json();
-            
-            // Log the response for debugging
-            console.log('Webhook response:', data);
-            
-            // Hide typing indicator
-            this.hideTypingIndicator();
-
-            // Add bot response - handle multiple possible response formats
-            let botMessage;
-            
-            // Check various possible response structures
-            if (data.response) {
-                botMessage = data.response;
-            } else if (data.message) {
-                botMessage = data.message;
-            } else if (data.output) {
-                botMessage = data.output;
-            } else if (data.text) {
-                botMessage = data.text;
-            } else if (data.reply) {
-                botMessage = data.reply;
-            } else if (data.data && data.data.response) {
-                botMessage = data.data.response;
-            } else if (data.data && data.data.message) {
-                botMessage = data.data.message;
-            } else if (typeof data === 'string') {
-                botMessage = data;
-            } else {
-                // If none of the above, try to get the first property value
-                const firstKey = Object.keys(data)[0];
-                botMessage = data[firstKey] || "I received your message! Let me help you with that.";
-            }
-            
+            const botMessage = this.getResponseText(data);
             this.addMessage(botMessage, 'bot');
-
+            this.chatStatus.textContent = '';
         } catch (error) {
             console.error('Error sending message:', error);
-            this.hideTypingIndicator();
-            this.showError();
-            
-            // Fallback response
-            this.addMessage("I'm having trouble connecting right now. Please try again or contact me directly via email.", 'bot');
+            this.addMessage('I could not connect just now. Please try again or email me directly.', 'bot');
+            this.chatStatus.textContent = 'Message not sent. Check your connection and try again.';
         } finally {
-            // Re-enable send button
             this.sendBtn.disabled = false;
+            this.chatInput.focus();
         }
     }
 
+    getResponseText(data) {
+        if (typeof data === 'string') return data;
+        const candidates = [data?.response, data?.message, data?.output, data?.text, data?.reply, data?.data?.response, data?.data?.message];
+        const response = candidates.find((candidate) => typeof candidate === 'string' && candidate.trim());
+        if (response) return response;
+        const firstValue = data && typeof data === 'object' ? Object.values(data)[0] : null;
+        return typeof firstValue === 'string' ? firstValue : 'I received your message, but could not read the response.';
+    }
+
     addMessage(text, type) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${type}`;
-        
-        const time = new Date().toLocaleTimeString('en-US', { 
-            hour: 'numeric', 
-            minute: '2-digit' 
-        });
-
-        messageDiv.innerHTML = `
-            <div class="message-avatar">${type === 'bot' ? 'M' : 'U'}</div>
-            <div class="message-content">
-                <div class="message-bubble">${this.escapeHtml(text)}</div>
-                <div class="message-time">${time}</div>
-            </div>
-        `;
-
-        this.chatMessages.appendChild(messageDiv);
-        this.scrollToBottom();
-
-        // Store message
-        this.messages.push({ text, type, time });
-    }
-
-    showTypingIndicator() {
-        this.typingIndicator.classList.add('active');
-        this.scrollToBottom();
-    }
-
-    hideTypingIndicator() {
-        this.typingIndicator.classList.remove('active');
-    }
-
-    showError() {
-        this.errorMessage.classList.add('active');
-        setTimeout(() => {
-            this.errorMessage.classList.remove('active');
-        }, 5000);
-    }
-
-    scrollToBottom() {
-        setTimeout(() => {
-            this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-        }, 100);
-    }
-
-    escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
+        const messageElement = document.createElement('article');
+        messageElement.className = `message ${type}`;
+        const bubble = document.createElement('p');
+        bubble.className = 'message-bubble';
+        bubble.textContent = String(text);
+        messageElement.appendChild(bubble);
+        this.chatMessages.appendChild(messageElement);
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+        this.messages.push({ text: String(text), type, time: new Date().toISOString() });
     }
 
     getUserId() {
-        // Generate or retrieve user ID from localStorage
-        let userId = localStorage.getItem('chatUserId');
-        if (!userId) {
-            userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-            localStorage.setItem('chatUserId', userId);
+        let userId;
+        try {
+            userId = localStorage.getItem('chatUserId');
+            if (!userId) {
+                userId = `user_${Date.now()}_${Math.random().toString(36).slice(2, 11)}`;
+                localStorage.setItem('chatUserId', userId);
+            }
+        } catch (error) {
+            userId = `user_${Date.now()}`;
         }
         return userId;
     }
 }
 
-// Initialize chatbot when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    new Chatbot();
-});
+new Chatbot();
