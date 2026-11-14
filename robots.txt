@@ -1,3 +1,2 @@
 User-agent: *
 Allow: /
-Sitemap: https://mushafali.live/sitemap.xml

@@ -17,21 +17,6 @@ A responsive personal portfolio built with plain HTML, CSS, and JavaScript. The 
 
 Open `index.html` directly, or serve the project directory with a static web server such as the VS Code Live Server extension. No build step or package installation is required.
 
-## Hosting
-
-The root `CNAME` file is configured for the custom domain `mushafali.live`. The Git remote points to `mushafmirdev/mushaf-portfolio-ai` on the `main` branch. This checkout does not include a Pages workflow or build configuration, so confirm the publishing source in the repository's GitHub Pages settings. The intended site URLs are:
-
-- https://mushafali.live/
-- https://mushafali.live/about.html
-- https://mushafali.live/activities.html
-- https://mushafali.live/skills.html
-- https://mushafali.live/tools.html
-- https://mushafali.live/projects.html
-- https://mushafali.live/services.html
-- https://mushafali.live/contact.html
-
-The deployed branch is `main`.
-
 ## Theme
 
 The site follows the visitor's operating-system color preference by default. The navigation menu allows choosing System, Light, or Dark; explicit choices are stored in browser local storage.
