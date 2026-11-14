@@ -24,6 +24,15 @@
 .service-contact-inner { display: flex; justify-content: space-between; align-items: center; gap: 24px; }
 .service-contact h2 { margin-top: 5px; }
 
+body.services-page main > section {
+    position: relative;
+    top: auto;
+    z-index: auto;
+    min-height: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
 @media (max-width: 760px) {
     .service-item { grid-template-columns: 34px minmax(0, 1fr); gap: 14px 20px; }
     .service-action { grid-column: 2; justify-self: start; }
