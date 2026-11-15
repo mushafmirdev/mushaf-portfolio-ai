@@ -117,6 +117,10 @@
             if (section.offsetTop <= marker) currentSection = section;
         });
 
+        if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 30) {
+            currentSection = sections[sections.length - 1];
+        }
+
         sectionLinks.forEach((link) => {
             const isCurrent = link.getAttribute('href') === `#${currentSection.id}`;
             link.classList.toggle('active', isCurrent);
